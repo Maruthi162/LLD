@@ -1,0 +1,3 @@
+Covered this under the Fsctory Design pattern.
+
+Abstract Factory is also one type of Factory design pattern.
