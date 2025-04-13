@@ -1,0 +1,19 @@
+📌 Problem Statement (File System Example):
+
+    You are tasked with designing a system to represent a file structure, where:
+
+    Files are individual items (like resume.pdf, photo.jpg).
+
+    Folders (directories) can contain files and other folders.
+
+
+The system should allow operations like:
+
+    Displaying contents of a folder
+
+    Getting total size
+
+    Adding/removing files and subfolders
+
+    Treating both files and folders uniformly
+

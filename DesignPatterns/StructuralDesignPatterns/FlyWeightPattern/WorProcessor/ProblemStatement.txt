@@ -1,0 +1,4 @@
+Problem Statement:
+We want to manage a zoo where different animals can be added to different enclosures. Some animals are of the same type, but each has a unique position (extrinsic state). Without the Flyweight Pattern, we'd have to store redundant information for each animal of the same type (e.g., same breed), which leads to memory inefficiency.
+
+Using the Flyweight Pattern, we can have a shared intrinsic state for animals that belong to the same breed, while having unique extrinsic state for each animal, such as its position in the zoo.

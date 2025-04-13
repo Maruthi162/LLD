@@ -1,0 +1,26 @@
+⚠️ Challenges Without Composite Pattern:
+If you don’t use the Composite Pattern, you’ll likely represent File and Folder as separate classes, and run into problems like:
+
+1. ❌ Duplicate code & complex logic
+You’ll need to check type every time:
+
+java
+Copy
+Edit
+if (item instanceof Folder) {
+    // recursively list contents
+} else if (item instanceof File) {
+    // show file
+}
+Each operation (like getSize(), print(), etc.) becomes messy and duplicated.
+
+2. ❌ Inconsistent interface
+Files and Folders have different methods, so client code can’t treat them the same.
+
+This breaks polymorphism, so you can’t write clean recursive algorithms.
+
+3. ❌ Hard to scale
+As the system grows (permissions, symbolic links, file types), the code becomes harder to maintain or extend.
+
+Violates Open/Closed Principle (OCP) from SOLID — every change requires editing existing logic.
+

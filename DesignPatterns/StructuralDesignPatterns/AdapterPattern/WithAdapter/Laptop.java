@@ -24,3 +24,9 @@ public class Laptop {
         //this method calls the adaptee method to charge the device with round pin
     }
 }
+
+//Client (Laptop) expects chargeWithUSBC()
+
+//Old Charger only has chargeWithRoundPin()
+
+//Adapter maps the expected interface to the existing method
