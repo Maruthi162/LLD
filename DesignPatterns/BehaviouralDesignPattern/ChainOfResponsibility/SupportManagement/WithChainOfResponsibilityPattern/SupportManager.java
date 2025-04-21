@@ -12,3 +12,5 @@ public class SupportManager extends SupportHandler{
         }
     }
 }
+// This class represents a concrete handler in the chain of responsibility pattern.
+//and it is a second concrete handler in the chain of responsibility pattern.

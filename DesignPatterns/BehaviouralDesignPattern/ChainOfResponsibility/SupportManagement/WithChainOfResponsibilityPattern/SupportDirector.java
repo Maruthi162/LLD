@@ -12,3 +12,6 @@ public class SupportDirector extends SupportHandler {
         }
     } 
 }
+// This class represents a concrete handler in the chain of responsibility pattern.
+//and it is a third concrete handler in the chain of responsibility pattern.
+// It handles high priority requests and passes the request to the next handler if it cannot handle it.

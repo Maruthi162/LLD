@@ -12,3 +12,5 @@ public class SupportAgent extends SupportHandler {
         }
     }
 }
+// This class represents a concrete handler in the chain of responsibility pattern.
+//this is the first concrete handler in the chain of responsibility pattern.
