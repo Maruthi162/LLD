@@ -27,6 +27,7 @@ public class Entrance {
         if (assignedSpot != null) {
             ticket = new Ticket(LocalDateTime.now(), vehicle); // Initialize the ticket
             ticket.setVehicle(vehicle); // Set the vehicle in the ticket
+            vehicle.setTicket(ticket); // Associate the ticket with the vehicle
             return ticket; // Return the generated ticket
         } else {
             System.out.println("No available parking spots for the vehicle type.");
@@ -39,8 +40,9 @@ public class Entrance {
         Vehicle vehicle = VehicleFactory.createVehicle(vehicleType, licensePlate, color, ownerName, ownerContact);
         generateTicket(vehicle); // Generate a ticket for the vehicle
         System.out.println("Ticket generated for vehicle: " + licensePlate + " at entrance: " + entranceId);
-
         isOpen = true; // Set entrance status to open
+        System.out.println("Entrance " + entranceId + " is now open.");
+        //close after vehiclePassed
     }
 
     public void closeEntrance() {

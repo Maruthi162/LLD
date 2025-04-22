@@ -21,7 +21,7 @@ public class Payment {
         this.ticketId = ticketId;
         this.amount = amount;
         this.isPaid = false; // Default to unpaid
-        //this.paymentDate = LocalDate.now(); // Set the payment date to today
+     //this.paymentDate = LocalDate.now(); // Set the payment date to today
     }
     public void processPayment() {
         if (paymentStrategy != null) {

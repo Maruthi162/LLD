@@ -74,6 +74,16 @@ public class Ticket {
         return 0.0; // Return 0 if spent time is not calculated
     }
 
+    public void showTicketDetails() {
+        System.out.println("Ticket ID: " + ticketId);
+        System.out.println("Entry Date and Time: " + entryDateTime);
+        System.out.println("Exit Date and Time: " + exitDateTime);
+        System.out.println("Vehicle: " + vehicle.getLicensePlate());
+        System.out.println("Spent Time: " + SpentTime);
+        System.out.println("Amount Due: " + amountDue);
+        System.out.println("Paid: " + isPaid);
+        System.out.println("Parking Spot ID: " + parkingSpot.getSpotId());
+    }
 
     //Getters and Setters
     public String getTicketId() {
@@ -121,9 +131,7 @@ public class Ticket {
    public ParkingSpot getParkingSpot() {
         return parkingSpot;
     }
-    public void setParkingSpot(ParkingSpot parkingSpot) {
-        this.parkingSpot = parkingSpot;
-    }
+    
     public ParkingLot getParkingLot() {
         return parkingLot;
     }

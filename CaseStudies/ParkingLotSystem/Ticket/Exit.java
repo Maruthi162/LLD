@@ -22,33 +22,42 @@ public class Exit {
     }
 
     public void openExit() {
-        if(isOpen == false) {
+        if(isOpen == true ) {
             System.out.println("Exit " + exitId + " is already open.");
             return; // Exit if the exit is already open
         }
-        setOpen(true); // Set exit status to open
-        System.out.println("Exit " + exitId + " is now open.");
+        if(payment.isPaid()){
+            setOpen(true); // Set exit status to open
+            System.out.println("Exit " + exitId + " is now open.");
+        }
+       
     }
 
-    public void processExit(Vehicle vehicle, PaymentType paymentMethod) {
-        if(vehicle == null) {
-            System.out.println("No vehicle found at exit " + exitId);
-            return; // Exit if no vehicle is found
-        }
-        Ticket ticket = vehicle.getTicket(); // Get the ticket associated with the vehicle
-        if(ticket == null) {
-            System.out.println("No ticket found for vehicle " + vehicle.getLicensePlate());
+    public void processExit(Ticket ticket, PaymentType paymentMethod) {
+        if (ticket == null) {
+            System.out.println("No ticket found at exit " + exitId);
             return; // Exit if no ticket is found
         }
-        ticket.setExitDateTime(LocalDateTime.now()); // Set the exit date and time
-        ticket.calculateAmountDue(); // Calculate the amount due based on the parking duration
-
-        payment = new Payment(ticket.getTicketId()+LocalDateTime.now().toString(), ticket.getTicketId(), ticket.calculateAmountDue()); // Create a new payment object
-        payBill(ticket.calculateAmountDue(),paymentMethod); // Process the payment
-        vehicle.unpark();
-        System.out.println("Vehicle " + vehicle.getLicensePlate() + " has exited through exit " + exitId);
+    
+        // Set the exit date and time
+        ticket.setExitDateTime(LocalDateTime.now());
+    
+        // Calculate the amount due based on the parking duration
+        double amountDue = ticket.calculateAmountDue();
+        //set Vehicle
+        vehicle = ticket.getVehicle(); // Get the vehicle from the ticket
+        // Create a new payment object
+        payment = new Payment(ticket.getTicketId() + LocalDateTime.now().toString(), ticket.getTicketId(), amountDue);
+    
+        // Process the payment
+        if (payBill(amountDue, paymentMethod)) {
+            openExit(); // Open the exit for the vehicle to leave
+            ticket.getParkingSpot().unparkVehicle(vehicle); // Mark the parking spot as available
+            System.out.println("Vehicle " + vehicle.getLicensePlate() + " has exited through exit " + exitId);
+        } else {
+            System.out.println("Payment failed for ticket ID: " + ticket.getTicketId());
+        }
     }
-
     public boolean payBill(double amount, PaymentType paymentMethod) {
         
         if(payment == null) {

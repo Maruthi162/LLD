@@ -2,6 +2,7 @@ package CaseStudies.ParkingLotSystem.ParkingSpot;
 
 import CaseStudies.ParkingLotSystem.Enums.ParkingSpotType;
 import CaseStudies.ParkingLotSystem.Enums.VehicleType;
+import CaseStudies.ParkingLotSystem.Ticket.Ticket;
 import CaseStudies.ParkingLotSystem.Vehicle.Vehicle;
 
 
@@ -11,6 +12,7 @@ public class ParkingSpot {
     private ParkingSpotType spotType; // e.g., Compact, Standard, Handicapped
     private boolean isOccupied;
     private String vehicleId; // ID of the vehicle parked in this spot, if any
+    private Ticket ticket; // Reference to the ticket associated with the vehicle parked in this spot
     
     public ParkingSpot(int floorId, int spotId, ParkingSpotType spotType) {
         this.floorId = floorId; // ID of the floor where the parking spot is located
@@ -44,6 +46,11 @@ public class ParkingSpot {
 
         if (vehicle == null) {
             System.out.println("Invalid vehicle.");
+            return;
+        }
+        ticket = vehicle.getTicket(); // Get the ticket associated with the vehicle
+        if (ticket == null) {
+            System.out.println("Vehicle does not have a valid ticket.");
             return;
         }
         if (isOccupied) {
@@ -104,6 +111,12 @@ public class ParkingSpot {
     }
     public void setFloorId(int floorId) {
         this.floorId = floorId;
+    }
+    public Ticket getTicket() {
+        return ticket;
+    }
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 
 
